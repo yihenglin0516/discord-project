@@ -32,7 +32,7 @@ class Hash:
         while pointer:
             _key=pointer.value[0]+' '+pointer.value[1]
             if _key==key:
-                return pointer._output()
+                return pointer
             else:
                 pointer=pointer.next 
         return 'class not found '
