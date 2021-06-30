@@ -1,11 +1,12 @@
 class node:
-    def __init__(self,item) : ##item type 是list
-        self.value=item
+    def __init__(self,data) : ##item type 是list
+        self.Name = data[0]
+        self.Teacher = data[1]
+        self.Time = data[2]
+        self.NTUcourse = data[3]
         self.next=None
-    def _output(self):
-        result=''
-        for i in self.value:
-            result+=i+' '
+    def output(self):
+        result=self.Name+' '+self.Teacher+' '+self.Time+'\n'+self.NTUcourse+'\n'
         return result
 
 class Linked_list:
@@ -23,8 +24,7 @@ class Linked_list:
         pointer=self.root
         result=''
         while  pointer:
-            l=pointer.value
-            result+=l[0]+' '+l[1]+' '+l[2]+'\n'
+            result+=pointer.Name+' '+pointer.Teacher+' '+pointer.Time+'\n'
             pointer=pointer.next
         return result
 
