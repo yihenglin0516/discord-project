@@ -4,7 +4,7 @@ import linked_list
 class Hash:
     def __init__(self,size):
         self.size=size
-        self.table=[linked_list.Linked_list() for i in range(size),0]
+        self.table=[linked_list.Linked_list() for i in range(size)]
         
 
     def insert(self,item):  #item是list
