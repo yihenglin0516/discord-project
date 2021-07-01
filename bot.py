@@ -52,3 +52,9 @@ async def comment(ctx,arg1,arg2,arg3):
     arg=arg1+' '+arg2
     table.add_comment(ctx,arg,arg3)
 
+@bot.command()
+async def great(ctx,arg1,arg2):
+    arg = arg1+' '+arg2
+    table.great_points(arg)
+
+

@@ -5,7 +5,9 @@ class node:
         self.Time = data[2]
         self.NTUcourse = data[3]
         self.comment=''
+        self.graet_points = 0
         self.next=None
+        
     def output(self):
         result=self.Name+' '+self.Teacher+' '+self.Time+'\n'+self.NTUcourse+'\n'
         if self.comment!='' :
@@ -28,7 +30,7 @@ class Linked_list:
         pointer=self.root
         result=''
         while  pointer:
-            result+=pointer.Name+' '+pointer.Teacher+' '+pointer.Time+'\n'
+            result+=pointer.Name+' '+pointer.Teacher+' '+pointer.Time+pointer.great_points+'\n'
             pointer=pointer.next
         return result
 
