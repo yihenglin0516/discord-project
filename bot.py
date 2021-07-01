@@ -62,4 +62,4 @@ async def disliked(ctx,arg1,arg2):
     arg = arg1+' '+arg2
     table.disliked_points(arg)
 
-bot.run('ODU3OTc0NjE3OTA5ODg2OTg2.YNXZIQ.FljhLiycCrlW2aQ5m68wHshtqTs')
+
