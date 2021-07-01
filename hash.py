@@ -36,6 +36,13 @@ class Hash:
             else:
                 pointer=pointer.next 
         return 'class not found '
+    def add_comment(self,ctx,classname,comment):
+        target=self.search(classname)  #find  the class we want to insert 
+        if type(target)==str:
+            ctx.send('no such class') 
+        else:
+            target.comment+=str(ctx.author)+': '+comment+'\n'
+
             
 
         
