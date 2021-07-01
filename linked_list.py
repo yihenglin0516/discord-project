@@ -4,9 +4,13 @@ class node:
         self.Teacher = data[1]
         self.Time = data[2]
         self.NTUcourse = data[3]
+        self.comment=''
         self.next=None
     def output(self):
         result=self.Name+' '+self.Teacher+' '+self.Time+'\n'+self.NTUcourse+'\n'
+        if self.comment!='' :
+            result+=self.comment+'\n'
+
         return result
 
 class Linked_list:
