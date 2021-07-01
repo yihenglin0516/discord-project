@@ -53,8 +53,13 @@ async def comment(ctx,arg1,arg2,arg3):
     table.add_comment(ctx,arg,arg3)
 
 @bot.command()
-async def great(ctx,arg1,arg2):
+async def liked(ctx,arg1,arg2):
     arg = arg1+' '+arg2
     table.great_points(arg)
 
+@bot.command()
+async def disliked(ctx,arg1,arg2):
+    arg = arg1+' '+arg2
+    table.disliked_points(arg)
 
+bot.run('ODU3OTc0NjE3OTA5ODg2OTg2.YNXZIQ.FljhLiycCrlW2aQ5m68wHshtqTs')

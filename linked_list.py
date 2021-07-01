@@ -6,10 +6,11 @@ class node:
         self.NTUcourse = data[3]
         self.comment=''
         self.great_points = 0
+        self.disliked_points = 0
         self.next=None
         
     def output(self):
-        result=self.Name+' '+self.Teacher+' '+self.Time+'讚'+str(self.great_points)+'\n'+self.NTUcourse+'\n'
+        result=self.Name+' '+self.Teacher+' '+self.Time+'讚'+str(self.great_points)+' '+'倒讚'+str(self.disliked_points)+'\n'+self.NTUcourse+'\n'
         if self.comment!='' :
             result+=self.comment+'\n'
 
@@ -30,9 +31,10 @@ class Linked_list:
         pointer=self.root
         result=''
         while  pointer:
-            result+=pointer.Name+' '+pointer.Teacher+' '+pointer.Time+'讚'+str(pointer.great_points)+'\n'
+            result+=pointer.Name+' '+pointer.Teacher+' '+pointer.Time+'讚'+str(pointer.great_points)+' '+'倒讚'+str(pointer.disliked_points)+'\n'
             pointer=pointer.next
         return result
+
 
             
             

@@ -1,5 +1,6 @@
 from bs4.element import Tag
 import linked_list
+import heapq
 
 class Hash:
     def __init__(self,size):
@@ -22,8 +23,7 @@ class Hash:
         for i in self.table:
             if i.root:
                 result.append(i.show())
-        
-        result = result[::-1]
+
         result = ''.join(result)
         return result 
 
@@ -60,19 +60,23 @@ class Hash:
             pass
         else :
             target.great_points += 1 
-            while(target.next): 
-                if target.next.great_points < target.great_points:
-                    #change info
-                    target.next.Name,target.Name = target.Name,target.next.Name  
-                    target.next.Teacher,target.Teacher = target.Teacher,target.next.Teacher 
-                    target.next.Time,target.Time = target.Time,target.next.Time
-                    target.next.NTUcourse,target.NTUcourse = target.NTUcourse,target.next.NTUcourse
-                    target.next.comment,target.comment = target.comment,target.next.comment
-                    target.next.graet_points,target.graet_points = target.graet_points,target.next.graet_points
-                    
-                    target = target.next
-                else:
-                    break
+    
+    def disliked_points(self,classname):
+        target = self.search(classname)
+        
+        if type(target) == str:
+            pass
+        else :
+            target.disliked_points += 1
+    
+    
+        
+
+
+        
+            
+
+
     
 
 
