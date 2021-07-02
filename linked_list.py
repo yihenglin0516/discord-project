@@ -8,11 +8,10 @@ class node:
         self.comment=''
         self.great_points = 0
         self.disliked_points = 0
-        self.sum_ = self.great_points - self.disliked_points
         self.next=None
         
     def output(self):
-        result="課程名稱:"+self.Name+" "+"\n"+"教師姓名:"+self.Teacher+"\n"+"上課時間:"+self.Time+"\n"+"學分:"+self.credit+"\n"+"ntu course: "+self.NTUcourse
+        result="課程名稱:"+self.Name+" "+"\n"+"教師姓名:"+self.Teacher+"\n"+"上課時間:"+self.Time+"\n"+"學分:"+' '+self.credit+'讚'+str(self.great_points)+' '+'倒讚'+str(self.disliked_points)+"\n"+"ntu course: "+self.NTUcourse
         if self.comment!='' :
             result+=self.comment+'\n'
 
