@@ -7,6 +7,7 @@ class node:
         self.comment=''
         self.great_points = 0
         self.disliked_points = 0
+        self.sum_ = self.great_points - self.disliked_points
         self.next=None
         
     def output(self):

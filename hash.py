@@ -1,6 +1,6 @@
 from bs4.element import Tag
 import linked_list
-import heapq
+
 
 class Hash:
     def __init__(self,size):
@@ -22,6 +22,7 @@ class Hash:
         self.table[index].push(_item)
 
     def list_all(self): #只show出基本的info 
+        '''
         result=[]
         for i in self.table:
             if i.root:
@@ -30,6 +31,21 @@ class Hash:
         print(result)
         result = ''.join(result)
         return result 
+        '''
+        all_node = self.get_all_node()
+        result = [[],[],[],[],[],[],[],[],[],[],[]]
+        for i in all_node:
+            i.sum_ = i.great_points - i.disliked_points
+            print(i.sum_+5)
+            result[i.sum_+5].append(i)
+        
+        
+        result_str = ''
+        for i in result:
+            for j in i:
+                print(type(j))
+                result_str += j.Name+' '+j.Teacher+' '+j.Time+'讚'+str(j.great_points)+' '+'倒讚'+str(j.disliked_points)+'\n'
+        return result_str
 
     def search(self,key):
         index=0
@@ -61,18 +77,23 @@ class Hash:
             
     
     def great_points(self,classname):
+        great_limit = 5
         target = self.search(classname)
         
         if type(target) == str:
             pass
         else :
-            target.great_points += 1 
+            if target.great_points == great_limit:
+                pass
+            else :
+                target.great_points += 1 
     
     def disliked_points(self,classname):
+        disliked_limit = 5
         target = self.search(classname)
         
-        if type(target) == str:
-            pass
+        if target.disliked_points == disliked_limit:
+                pass
         else :
             target.disliked_points += 1
     
