@@ -76,8 +76,14 @@ class Hash:
         else :
             target.disliked_points += 1
     
-    
-        
+    def get_all_node(self):
+        result=[]
+        for i in self.table:
+            pointer=i.root
+            while pointer:
+                result.append(pointer)
+                pointer=pointer.next
+        return result  
 
 
         
