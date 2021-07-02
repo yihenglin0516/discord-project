@@ -3,11 +3,11 @@ class node:
         self.Name = data[0]
         self.Teacher = data[1]
         self.Time = data[2]
-        self.NTUcourse = data[4]
+        self.NTUcourse = data[6]
         self.credit=data[3]
         self.comment=''
-        self.great_points = 0
-        self.disliked_points = 0
+        self.great_points = int(data[4])
+        self.disliked_points = int(data[5])
         self.next=None
         
     def output(self):
