@@ -9,7 +9,7 @@ def show_info(url):
         teacher=''
     name=soup.find_all('td')[3].contents[0]
     when=soup.find_all('td')[23].string
-    credit= soup.find_all('td')[17].string
+    credit= soup.find_all('td')[17].string.strip()
     return name,teacher,when,credit
 
     
