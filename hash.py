@@ -78,8 +78,31 @@ class Hash:
         if type(target)==str:
             ctx.send('no such class') 
         else :
-             target.comment = ''
-        
+            comment_ = target.comment.split("\n")
+            comment_ = comment_[:-1]
+            print(comment_)
+            for i in range(len(comment_)):
+                comment_[i] = comment_[i].split(': ')
+                print(comment_[i])
+                if comment_[i][0] == str(ctx.author):
+                    comment_[i] = ' '
+                else :
+                    comment_[i] = ': '.join(comment_[i])
+                    print(comment_[i])
+            print(comment_)
+            
+            for i in comment_ :
+                if i == ' ':
+                    comment_.remove(i)
+            
+            
+            comment_ = '\n'.join(comment_)
+            comment_ = comment_.strip()
+            if comment_ :
+                target.comment = comment_ + '\n'
+            else :
+                target.comment = ''
+            
     
     def great_points(self,classname):
         great_limit = 5
