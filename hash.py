@@ -10,9 +10,12 @@ class Hash:
 
     def insert(self,item):  #item是list
         index=0
-        key=item[0]+' '+item[1]
+        key=item[0].strip()+" "+item[1].strip()
         for i,character  in enumerate(key): #hashing 
-            index+=(ord(character)//100)**i
+            if ord(character)>10000:
+                index+=(ord(character)//100)**i
+            else:
+                index+=ord(character)**i
         index=index%self.size
         print('key= '+key+'index= '+str(index))
         _item=linked_list.node(item)
@@ -22,8 +25,9 @@ class Hash:
         result=[]
         for i in self.table:
             if i.root:
+                print(1)
                 result.append(i.show())
-
+        print(result)
         result = ''.join(result)
         return result 
 
@@ -32,7 +36,10 @@ class Hash:
         key=str.strip(key)
         print(key)
         for i,character  in enumerate(key): #hashing 
-            index+=(ord(character)//100)**i
+            if ord(character)>10000:
+                index+=(ord(character)//100)**i
+            else:
+                index+=ord(character)**i
         index=index%self.size
         print(index)
         target=self.table[index]
