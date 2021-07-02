@@ -35,15 +35,14 @@ class Hash:
         all_node = self.get_all_node()
         result = [[],[],[],[],[],[],[],[],[],[],[]]
         for i in all_node:
-            i.sum_ = i.great_points - i.disliked_points
-            print(i.sum_+5)
+            i.sum_ = i.great_points - i.disliked_points 
             result[i.sum_+5].append(i)
         
-        
+        result = result[::-1]
         result_str = ''
         for i in result:
             for j in i:
-                print(type(j))
+                
                 result_str += j.Name+' '+j.Teacher+' '+j.Time+'讚'+str(j.great_points)+' '+'倒讚'+str(j.disliked_points)+'\n'
         return result_str
 
