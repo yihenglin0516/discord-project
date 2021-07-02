@@ -2,12 +2,14 @@ import discord
 from discord.ext import commands
 from web import show_info
 from web1 import search_class
-import hash 
+import hash
+import schedule
 
 bot=commands.Bot(command_prefix="!")
-## initial 
+## initial
 table=hash.Hash(150)
-#load data 
+class_schedule = schedule.ClassSchedule()
+#load data
 with open('data.txt','r',encoding="utf-8") as data:
     for line in data :
         line=line.split('!')
@@ -18,7 +20,7 @@ with open('data.txt','r',encoding="utf-8") as data:
 
 @bot.command()
 async def show(ctx,arg):
-    
+
     name,teacher,when,credit=show_info(arg)
     if when:   #檢查傳回值是否異常
         when=when.strip()
@@ -27,7 +29,7 @@ async def show(ctx,arg):
     link="https://www.ptt.cc/bbs/NTUcourse/search?q=+"+teacher
     message="課程名稱:"+name+" "+"\n"+"教師姓名:"+teacher+"\n"+"上課時間"+when+"\n"+"ntu course: "+link
     await ctx.send(message)
-    
+
     _list=[name,teacher,when,credit,0,0,link]
     key=name+' '+teacher       #新增key尋找有沒有已經被加入過了
 
@@ -35,13 +37,13 @@ async def show(ctx,arg):
         table.insert(_list)
     else:
         pass
-@bot.command()    
+@bot.command()
 async def show_all(ctx):
     result=table.list_all()
     if result=='':
         result='no class inside'
     await ctx.send(result)
-@bot.command()   
+@bot.command()
 async def find(ctx,arg1,arg2):
     arg=arg1+' '+arg2
 
@@ -54,7 +56,7 @@ async def find(ctx,arg1,arg2):
 '''
 @bot.command()
 async def add_class(ctx,arg1,arg2):
-    arg=arg1+' '+arg2 
+    arg=arg1+' '+arg2
     add_to_table(arg,table)
 
 @bot.command()
@@ -90,3 +92,19 @@ async def disliked(ctx,arg1,arg2):
 @bot.command()
 async def save(ctx):
     table.save_data()
+
+@bot.command()
+async def add_to_schedule(ctx,arg1,arg2):
+    arg = arg1 + ' ' + arg2
+    if class_schedule.add(arg,table) == False :
+        await ctx.send('你已經有選這堂課')
+    else:
+        await ctx.send('已加入課程')
+
+@bot.command()
+async def delete_from_schedule(ctx,arg1,arg2):
+    arg = arg1 + ' ' + arg2
+    if class_schedule.delete(arg,table) == False :
+        await ctx.send('你沒有選這堂課')
+    else :
+        await ctx.send('課程已刪除')
