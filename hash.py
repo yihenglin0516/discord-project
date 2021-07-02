@@ -35,10 +35,9 @@ class Hash:
         all_node = self.get_all_node()
         result = [[],[],[],[],[],[],[],[],[],[],[]]
         for i in all_node:
-            i.sum_ = i.great_points - i.disliked_points 
-            result[i.sum_+5].append(i)
-        
-        result = result[::-1]
+            sum_ = i.disliked_points - i.great_points
+            result[sum_+5].append(i)
+    
         result_str = ''
         for i in result:
             for j in i:
@@ -73,7 +72,14 @@ class Hash:
             ctx.send('no such class') 
         else:
             target.comment+=str(ctx.author)+': '+comment+'\n'
-            
+    
+    def clear_comment(self,ctx,classname):
+        target=self.search(classname)  #find  the class we want to insert 
+        if type(target)==str:
+            ctx.send('no such class') 
+        else :
+             target.comment = ''
+        
     
     def great_points(self,classname):
         great_limit = 5
