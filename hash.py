@@ -133,7 +133,12 @@ class Hash:
                 result.append(pointer)
                 pointer=pointer.next
         return result  
-
+    def save_data(self):
+        node_list=self.get_all_node()
+        data=open('data.txt','w',encoding='utf-8')
+        for node in node_list:
+            data.write(node.Name+'!'+node.Teacher+'!'+node.Time+'!'+node.credit+'!'+str(node.great_points)+'!'+str(node.disliked_points)+'!'+node.NTUcourse+'\n')
+        data.close()
 
         
             
