@@ -82,7 +82,7 @@ class Hash:
             comment_ = comment_[:-1]
             print(comment_)
             for i in range(len(comment_)):
-                comment_[i] = comment_[i].split(': ')
+                comment_[i] = comment_[i].split(': ') #原先comment_[i] 是 "username: comment"
                 print(comment_[i])
                 if comment_[i][0] == str(ctx.author):
                     comment_[i] = ' '
