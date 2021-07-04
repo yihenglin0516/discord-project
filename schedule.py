@@ -10,7 +10,7 @@ class ClassSchedule:
     def __init__(self):
         self.dic = {'星期一':'B','星期二':'C','星期三':'D','星期四':'E','星期五':'F','星期六':'G','星期日':'H'}
 
-    def create(self):
+    def create(self,username):
         self.schedule = openpyxl.Workbook()
         sheet = self.schedule.worksheets[0]
         sheet.title = '課表'
@@ -29,24 +29,23 @@ class ClassSchedule:
         sheet['A18'].value = '目前學分'
         sheet['B18'].value = '0'
 
-        self.schedule.save('class_schedule.xlsx')
+        self.schedule.save(username + 'class_schedule.xlsx')
 
 
-    def add(self,CoursenameTeacher,hash):
+    def add(self,CoursenameTeacher,hash,username):
         try:
-            wb = openpyxl.load_workbook('class_schedule.xlsx')
+            wb = openpyxl.load_workbook(username + 'class_schedule.xlsx')
             sheet = wb.worksheets[0]
         except FileNotFoundError:
-            self.create()  #如果沒有課表就新增一個
-            wb = openpyxl.load_workbook('class_schedule.xlsx')
+            self.create(username)  #如果沒有課表就新增一個
+            wb = openpyxl.load_workbook(username + 'class_schedule.xlsx')
             sheet = wb.worksheets[0]
         course_info = hash.search(CoursenameTeacher)  # attribute : Name , Teacher , Time , link
         name , teacher , when ,credit = course_info.Name , course_info.Teacher ,course_info.Time ,course_info.credit
         sheet['B18'].value = str(int(sheet['B18'].value) + int(float(credit)))
         if when == '' :  ##跑不進來這個loop
-            print('Jeff is handsome')
             sheet['B17'].value = name + '(' + teacher + ')' + '\n'  # 把沒有課程時間的都放在B17
-            wb.save('class_schedule.xlsx')
+            wb.save(username + 'class_schedule.xlsx')
 
         else:
             when  = re.sub(r"\(.*?\)|\{.*?\}|\[.*?\]", " ", when)   # 星期二3,4 星期三6,7
@@ -67,17 +66,17 @@ class ClassSchedule:
                         class_name = name + '('  + teacher + ')'
                         if sheet[str(add_column) + str(add_row)].value == None:
                             sheet[str(add_column) + str(add_row)].value = class_name + '\n'
-                            wb.save('class_schedule.xlsx')
+                            wb.save(username + 'class_schedule.xlsx')
                         elif class_name in sheet[str(add_column) + str(add_row)].value.split('\n')[:-1] :
                             return False
                         else:
                             sheet[str(add_column) + str(add_row)].value = sheet[str(add_column) + str(add_row)].value + class_name + '\n'
-                            wb.save('class_schedule.xlsx')
+                            wb.save(username + 'class_schedule.xlsx')
 
-    def delete(self,CoursenameTeacher,hash):
+    def delete(self,CoursenameTeacher,hash,username):
         course_info = hash.search(CoursenameTeacher)  # attribute : Name , Teacher , Time , link
         name , teacher , when , credit = course_info.Name , course_info.Teacher ,course_info.Time , course_info.credit
-        wb = openpyxl.load_workbook('class_schedule.xlsx')
+        wb = openpyxl.load_workbook(username + 'class_schedule.xlsx')
         sheet = wb.worksheets[0]
         sheet['B18'].value = str(int(sheet['B18'].value) - int(float(credit)))
         if when == '' :     #沒有上課時間的課程
@@ -87,7 +86,7 @@ class ClassSchedule:
             if delete_course in added_course :
                 added_course.remove(delete_course)
                 sheet['B17'].value = '\n'.join(added_course) + '\n'
-                wb.save('class_schedule.xlsx')
+                wb.save(username + 'class_schedule.xlsx')
 
         else :
             when  = re.sub(r"\(.*?\)|\{.*?\}|\[.*?\]", " ", when)   # 星期二3,4 星期三6,7
@@ -109,12 +108,12 @@ class ClassSchedule:
                         if delete_course in added_course :
                             added_course.remove(delete_course)
                             sheet[str(delete_column) + str(delete_row)].value = '\n'.join(added_course) +'\n'
-                            wb.save('class_schedule.xlsx')
+                            wb.save(username + 'class_schedule.xlsx')
                         else :
                             return False
 
     def show(self,username):
-        chart = pd.read_excel('class_schedule.xlsx')
+        chart = pd.read_excel(username + 'class_schedule.xlsx')
         chart = chart.fillna('-')
         plt.figure(username + '的課表')
         ax = plt.axes(frame_on=False)
