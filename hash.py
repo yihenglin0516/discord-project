@@ -24,19 +24,6 @@ class Hash:
     def list_all(self): #只show出基本的info 
         
         all_node = self.get_all_node()
-        '''
-        result = [[],[],[],[],[],[],[],[],[],[],[]]
-        for i in all_node:
-            sum_ = i.disliked_points - i.great_points
-            result[sum_+5].append(i)
-    
-        result_str = ''
-        for i in result:
-            for j in i:
-                
-                result_str += j.Name+' '+j.Teacher+' '+j.Time+'讚'+str(j.great_points)+' '+'倒讚'+str(j.disliked_points)+'\n'
-        return result_str
-        '''
         all_node.sort(key = lambda s:s.disliked_points-s.great_points)
         result = ''
         for j in all_node:
@@ -103,25 +90,22 @@ class Hash:
             
     
     def great_points(self,classname):
-        great_limit = 5
+        
         target = self.search(classname)
         
         if type(target) == str:
             pass
         else :
-            if target.great_points == great_limit:
-                pass
-            else :
-                target.great_points += 1 
+            target.great_points += 1 
     
     def disliked_points(self,classname):
-        disliked_limit = 5
+        
         target = self.search(classname)
         
-        if target.disliked_points == disliked_limit:
-                pass
+        if type(target) == str:
+            pass
         else :
-            target.disliked_points += 1
+            target.disliked_points += 1 
     
     def get_all_node(self):
         result=[]
