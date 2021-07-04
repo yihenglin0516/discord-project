@@ -115,13 +115,16 @@ class ClassSchedule:
     def show(self,username):
         chart = pd.read_excel(username + 'class_schedule.xlsx')
         chart = chart.fillna('-')
-        plt.figure(username + '的課表')
-        ax = plt.axes(frame_on=False)
-        ax.axis('tight')
-        ax.axis('off')
-        table = ax.table(cellText=chart.values,colLabels=chart.columns,loc="center")
-        table.auto_set_font_size(False)
-        table.set_fontsize(15)
-        table.scale(1.2,1.2)
 
-        plt.show()
+        embed = discord.Embed(title = username + "的課表")
+        embed.add_field(name = "時間",value='\n'.join(chart["時間"].tolist()),inline=True)
+        for date in self.dic:
+            if date == "星期一" :
+                credit = str(chart[date].tolist()[-1])
+                Monday_list = chart[date].tolist()[:-1]
+                Monday_list.append(credit)
+                embed.add_field(name = date,value='\n'.join(Monday_list),inline=True)
+            else:
+                embed.add_field(name = date,value='\n'.join(chart[date].tolist()),inline=True)
+
+        return embed
