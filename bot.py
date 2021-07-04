@@ -1,6 +1,7 @@
 from asyncio.events import Handle
 import discord
 from discord.ext import commands
+from matplotlib.pyplot import table
 from web import show_info
 import hash
 import schedule
@@ -122,4 +123,6 @@ async def delete_from_schedule(ctx,arg1,arg2):
 @bot.command()
 async def show_schedule(ctx):
     username = str(ctx.author)
-    class_schedule.show(username)
+    embedVr = class_schedule.show(username)
+    await ctx.send(embed = embedVr)
+
