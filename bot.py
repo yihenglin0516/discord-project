@@ -2,12 +2,12 @@ from asyncio.events import Handle
 import discord
 from discord.ext import commands
 from web import show_info
-from web1 import search_class
 import hash
 import schedule
 from save_data import Data
 bot=commands.Bot(command_prefix="!")
 #error handling 
+
 @bot.event
 async def on_command_error(ctx,error):
     if isinstance(error,commands.CommandNotFound):
@@ -19,6 +19,7 @@ async def on_command_error(ctx,error):
             await ctx.send('請檢查指令是否輸入錯誤')
     else:
         await ctx.send("請檢察指令是否輸入錯誤")
+        
 ## initial
 database=Data()
 class_schedule = schedule.ClassSchedule()
@@ -38,10 +39,6 @@ async def disconnect(ctx):
 async def show(ctx,arg):
     table=database.database[str(ctx.guild.id)]
     name,teacher,when,credit=show_info(arg)
-    if when:   #檢查傳回值是否異常
-        when=when.strip()
-    if not when:
-        when=''
     link="https://www.ptt.cc/bbs/NTUcourse/search?q=+"+teacher
     message="課程名稱:"+name+" "+"\n"+"教師姓名:"+teacher+"\n"+"上課時間"+when+"\n"+"ntu course: "+link
     await ctx.send(message)
@@ -119,4 +116,6 @@ async def delete_from_schedule(ctx,arg1,arg2):
         await ctx.send('你沒有選這堂課')
     else :
         await ctx.send('課程已刪除')
+
+
 
