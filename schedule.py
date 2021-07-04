@@ -1,7 +1,10 @@
 import re
+from numpy.lib.shape_base import tile
 import openpyxl
-from prettytable import PrettyTable
 import pandas as pd
+import discord
+import matplotlib.pyplot as plt
+
 
 class ClassSchedule:
     def __init__(self):
@@ -24,7 +27,7 @@ class ClassSchedule:
 
         sheet['A17'].value = '沒有課程時間的課'
         sheet['A18'].value = '目前學分'
-        sheet['B18'].value = 0
+        sheet['B18'].value = '0'
 
         self.schedule.save('class_schedule.xlsx')
 
@@ -39,9 +42,8 @@ class ClassSchedule:
             sheet = wb.worksheets[0]
         course_info = hash.search(CoursenameTeacher)  # attribute : Name , Teacher , Time , link
         name , teacher , when ,credit = course_info.Name , course_info.Teacher ,course_info.Time ,course_info.credit
-        print((float(credit)))
-        sheet['B18'].value = int(sheet['B18'].value) + int(float(credit))
-        if when == None :  ##跑不進來這個loop
+        sheet['B18'].value = str(int(sheet['B18'].value) + int(float(credit)))
+        if when == '' :  ##跑不進來這個loop
             print('Jeff is handsome')
             sheet['B17'].value = name + '(' + teacher + ')' + '\n'  # 把沒有課程時間的都放在B17
             wb.save('class_schedule.xlsx')
@@ -77,8 +79,8 @@ class ClassSchedule:
         name , teacher , when , credit = course_info.Name , course_info.Teacher ,course_info.Time , course_info.credit
         wb = openpyxl.load_workbook('class_schedule.xlsx')
         sheet = wb.worksheets[0]
-        sheet['B18'].value = int(sheet['B18'].value) - int(float(credit))
-        if when == None :     #沒有上課時間的課程
+        sheet['B18'].value = str(int(sheet['B18'].value) - int(float(credit)))
+        if when == '' :     #沒有上課時間的課程
             added_course = sheet['B17'].value.split('\n')
             added_course = added_course[:-1]
             delete_course = name + '(' + teacher + ')'
@@ -106,25 +108,21 @@ class ClassSchedule:
                         delete_course = name + '(' + teacher + ')'
                         if delete_course in added_course :
                             added_course.remove(delete_course)
-                            sheet[str(delete_column) + str(delete_row)].value = '\n'.join(added_course) + '\n'
+                            sheet[str(delete_column) + str(delete_row)].value = '\n'.join(added_course) +'\n'
                             wb.save('class_schedule.xlsx')
                         else :
                             return False
 
-    def show(self):
+    def show(self,username):
         chart = pd.read_excel('class_schedule.xlsx')
-        chart = chart.fillna('')
-        table = PrettyTable()
-        table.add_column('時間',chart['時間'].to_list())
-        table.add_column('星期一',chart['星期一'].to_list())
-        table.add_column('星期二',chart['星期二'].to_list())
-        table.add_column('星期三',chart['星期三'].to_list())
-        table.add_column('星期四',chart['星期四'].to_list())
-        table.add_column('星期五',chart['星期五'].to_list())
-        table.add_column('星期六',chart['星期六'].to_list())
-        table.add_column('星期日',chart['星期日'].to_list())
-        print(table)
+        chart = chart.fillna('-')
+        plt.figure(username + '的課表')
+        ax = plt.axes(frame_on=False)
+        ax.axis('tight')
+        ax.axis('off')
+        table = ax.table(cellText=chart.values,colLabels=chart.columns,loc="center")
+        table.auto_set_font_size(False)
+        table.set_fontsize(15)
+        table.scale(1.2,1.2)
 
-        return table
-
-
+        plt.show()
