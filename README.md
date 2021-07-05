@@ -7,11 +7,11 @@
 
 !connet :連結網路資料庫
 
-!show 課程網網址: 從課程網取得課程資訊同時取得NTUcourse連結。 參數:課程網網址 ex:https://nol.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=901%2032500&class=&dpt_code=9010&ser_no=25078&semester=109-2&lang=CH
+!show 課程網網址: 從課程網取得課程資訊同時取得NTUcourse連結 ex:https://nol.ntu.edu.tw/nol/coursesearch/print_table.php?course_id=901%2032500&class=&dpt_code=9010&ser_no=25078&semester=109-2&lang=CH
 
 !find  課程名稱 教師:提供查詢過的課程之一的完整資訊
 
-!show_all : 將所有查詢過的課程以讚和倒讚來排序並一一列出基本資訊 參數: 課程名稱 教師 ex: 資料結構 吳沛遠
+!show_all : 將所有查詢過的課程以讚和倒讚來排序並一一列出基本資訊
 
 !liked 課程名稱 教師: 點讚
 
