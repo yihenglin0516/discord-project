@@ -17,7 +17,7 @@
 
 !disliked 課程名稱 教師: 點倒讚
 
-!comment 課程名稱 教師:為課程新增註解
+!comment 課程名稱 教師 comment內容:為課程新增註解，教師和comment內容中間也需要空白 
 
 !clear 課程名稱 教師: 刪除user對課程的所有註解，不會刪除其他user的註解
 
