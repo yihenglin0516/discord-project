@@ -15,11 +15,11 @@ class Data (): #裡面放不同的hash
         raw[ctx]=[] #清空再重新寫入
         for node in node_list:
             raw[ctx].append([node.Name,node.Teacher,node.Time,node.credit,node.great_points,node.disliked_points,node.NTUcourse,node.comment])
-        print(raw)
+        
         update=requests.put("https://api.jsonstorage.net/v1/json/3f4e6ccf-02d2-492e-850f-f2b011e59f21" 
         ,json=raw
         )
-        print(update)
+        
     
     def load(self,ctx):
         self.database[ctx]=Hash(150)
@@ -30,7 +30,7 @@ class Data (): #裡面放不同的hash
         except KeyError: #新的channel
             raw={ctx:[]}
             data=raw[ctx]  #回傳裝有課程資料的list
-        print(raw)
+        
         
         for c in data :
             self.database[ctx].insert(c)

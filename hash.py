@@ -20,7 +20,7 @@ class Hash:
             else:
                 index+=ord(character)**i
         index=index%self.size
-        print('key= '+key+'index= '+str(index))
+        
         _item=linked_list.node(item)
         self.table[index].push(_item)
 
