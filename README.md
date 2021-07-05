@@ -56,45 +56,45 @@ pandas
 
 Hash
 
-  insert:傳入爬蟲爬到的資料，並整理加入hash table中
+    insert:傳入爬蟲爬到的資料，並整理加入hash table中
   
-  search:輸入課程名稱+教師名稱，從hash table取得資料並回傳
+    search:輸入課程名稱+教師名稱，從hash table取得資料並回傳
   
-  list_all:使用get_all_node得到所有node，用sort將node排序，以string將整理好的資訊回傳
+    list_all:使用get_all_node得到所有node，用sort將node排序，以string將整理好的資訊回傳
   
-  get_all_node:以list回傳所有node
+    get_all_node:以list回傳所有node
   
-  add_comment:輸入ctx(discord context 物件)、課程名稱+教師名稱+comment內容，更新node中的init資訊
+    add_comment:輸入ctx(discord context 物件)、課程名稱+教師名稱+comment內容，更新node中的init資訊
   
-  clear_comment:輸入ctx(discord context 物件)、課程名稱+教師名稱，刪除user的所有comment更新node中的init資訊
+    clear_comment:輸入ctx(discord context 物件)、課程名稱+教師名稱，刪除user的所有comment更新node中的init資訊
   
-  great_points:輸入課程名稱+教師名稱，更新node中的init資訊
+    great_points:輸入課程名稱+教師名稱，更新node中的init資訊
   
-  disliked_points:輸入課程名稱+教師名稱，更新node中的init資訊
+    disliked_points:輸入課程名稱+教師名稱，更新node中的init資訊
   
-  save_data:將所有node資料寫入文件
+    save_data:將所有node資料寫入文件
   
 Linked_lis:
 
-  push:輸入node，並連結上一個node
+    push:輸入node，並連結上一個node
 
-  show:將所有連結同一個root的node的資料以string輸出
+    show:將所有連結同一個root的node的資料以string輸出
 
 node:
 
-  init:儲存爬蟲所獲取的資料以及Linked_list中下一個連結的node
+    init:儲存爬蟲所獲取的資料以及Linked_list中下一個連結的node
   
-  output:以string輸出node的資訊
+    output:以string輸出node的資訊
  
 ClassSchedule:
 
-  creat:輸入discord使用者名稱，創造課表
+    creat:輸入discord使用者名稱，創造課表
   
-  add:輸入課程名稱+教師名稱、課表、discord使用者名稱，將課程加入課表
+    add:輸入課程名稱+教師名稱、課表、discord使用者名稱，將課程加入課表
   
-  delete:輸入課程名稱+教師名稱、課表、discord使用者名稱，將課程從課表刪除
+    delete:輸入課程名稱+教師名稱、課表、discord使用者名稱，將課程從課表刪除
   
-  show:輸入discord使用者名稱，輸出課表
+    show:輸入discord使用者名稱，輸出課表
   
-  show_credit:輸入discord使用者名稱，輸出目前使用者之選課學分
+    show_credit:輸入discord使用者名稱，輸出目前使用者之選課學分
 
