@@ -5,7 +5,9 @@ beautifulsoup4
 request  
 json  
 discord.py 
-jeff補充
+re
+openpyxl
+pandas
 
 # 軟體基本功能  
 此軟體的使用方法有兩種
@@ -42,7 +44,7 @@ jeff補充
 
 !clear 課程名稱 教師: 刪除user對課程的所有註解，不會刪除其他user的註解
 
-!add_to _schedule 課程名稱 教師:將課程加入課表，若發生衝堂則會以最新add的課程為主，並移除被衝堂課程
+!add_to_schedule 課程名稱 教師:將課程加入課表，若發生衝堂則會以最新add的課程為主，並移除被衝堂課程
 
 !show_schedule :於聊天室顯示課表以及總學分
 
