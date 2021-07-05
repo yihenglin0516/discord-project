@@ -7,7 +7,7 @@ json
 discord.py 
 jeff補充
 
-#軟體基本功能  
+# 軟體基本功能  
 此軟體的使用方法有兩種
 1.使用由開發者host的discord chatbot  
   透過連結:https://discord.com/api/oauth2/authorize?client_id=857974617909886986&permissions=0&scope=bot  
@@ -15,7 +15,8 @@ jeff補充
 2.創建屬於自己的discord chatbot帳號
   登入discord網站創建自己的chatbot帳號之後取得其token  
   在bot.py中最後加入程式  bot.run('token')即可運行自己的discord chatbot
-  
+ 
+完成機器人的加入或創建後，以下是關於指令的說明 
 
 使用方法:
 
@@ -47,5 +48,6 @@ jeff補充
 
 !disconnect :將所有資料上傳至網路資料庫，同時取消與網路資料庫的連結，若沒執行!disconnect則無法存檔
 
+# 程式碼結構說明
 
 
