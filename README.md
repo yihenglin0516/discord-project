@@ -74,7 +74,7 @@ Hash
   
     save_data:將所有node資料寫入文件
   
-Linked_lis:
+Linked_list:
 
     push:輸入node，並連結上一個node
 
