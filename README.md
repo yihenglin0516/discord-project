@@ -4,7 +4,7 @@ pyhton3
 beautifulsoup4  
 request  
 json  
-discord.py 
+discord.py   
 re  
 openpyxl  
 pandas  
