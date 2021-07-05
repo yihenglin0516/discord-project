@@ -5,13 +5,13 @@ class node:
         self.Time = data[2]
         self.NTUcourse = data[6]
         self.credit=data[3]
-        self.comment=''
+        self.comment=data[7]
         self.great_points = int(data[4])
         self.disliked_points = int(data[5])
         self.next=None
         
     def output(self):
-        result="課程名稱:"+self.Name+" "+"\n"+"教師姓名:"+self.Teacher+"\n"+"上課時間:"+self.Time+"\n"+"學分:"+' '+self.credit+'讚'+str(self.great_points)+' '+'倒讚'+str(self.disliked_points)+"\n"+"ntu course: "+self.NTUcourse
+        result="課程名稱:"+self.Name+" "+"\n"+"教師姓名:"+self.Teacher+"\n"+"上課時間:"+self.Time+"\n"+"學分:"+' '+self.credit+'讚'+str(self.great_points)+' '+'倒讚'+str(self.disliked_points)+"\n"+"ntu course: "+self.NTUcourse+"\n"
         if self.comment!='' :
             result+=self.comment+'\n'
 

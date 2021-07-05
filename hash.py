@@ -1,13 +1,16 @@
 from bs4.element import Tag
 import linked_list
-
+import time 
 
 class Hash:
     def __init__(self,size):
         self.size=size
         self.table=[linked_list.Linked_list() for i in range(size)]
+        self.last_updated=time.time()
+        self.server='沒東西'
+    def __del__(self):
+        self.table=None
         
-
     def insert(self,item):  #item是list
         index=0
         key=item[0].strip()+" "+item[1].strip()
@@ -33,14 +36,14 @@ class Hash:
     def search(self,key):
         index=0
         key=str.strip(key)
-        print(key)
+        
         for i,character  in enumerate(key): #hashing 
             if ord(character)>10000:
                 index+=(ord(character)//100)**i
             else:
                 index+=ord(character)**i
         index=index%self.size
-        print(index)
+       
         target=self.table[index]
         pointer=target.root
         while pointer:
@@ -65,16 +68,15 @@ class Hash:
         else :
             comment_ = target.comment.split("\n")
             comment_ = comment_[:-1]
-            print(comment_)
+            
             for i in range(len(comment_)):
                 comment_[i] = comment_[i].split(': ') #原先comment_[i] 是 "username: comment"
-                print(comment_[i])
+                
                 if comment_[i][0] == str(ctx.author):
                     comment_[i] = ' '
                 else :
                     comment_[i] = ': '.join(comment_[i])
-                    print(comment_[i])
-            print(comment_)
+               
             
             for i in comment_ :
                 if i == ' ':
