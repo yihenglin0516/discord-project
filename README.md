@@ -7,7 +7,8 @@ json
 discord.py   
 re  
 openpyxl  
-pandas  
+pandas
+
 
 # 軟體基本功能  
 此軟體的使用方法有兩種
