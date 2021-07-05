@@ -1,7 +1,0 @@
-主程式(discord.py)
-  爬蟲
-  資料結構
-  運算implementation
-strip 
-find 回傳class 
-  
