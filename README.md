@@ -5,9 +5,9 @@ beautifulsoup4
 request  
 json  
 discord.py 
-re
-openpyxl
-pandas
+re\n
+openpyxl\n
+pandas\n
 
 # 軟體基本功能  
 此軟體的使用方法有兩種
