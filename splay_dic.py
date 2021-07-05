@@ -1,22 +1,12 @@
-class subject():
-    def __init__(self,data):
-        self.Name = data[0]
-        self.Teacher = data[1]
-        self.Time = data[2]
-        self.NTUcourse = data[3]
-    def output(self):
-        result=self.Name+' '+self.Teacher+' '+self.Time+'\n'+self.NTUcourse+'\n'
-        return result
+from linked_list import node 
 
 class record():
     def __init__(self):
         self.array = []
-
     def insert(self,course):
-        self.array.append(subject(course))
+        self.array.append(node(course))
 
     def search (self, CourseteacherName):
-        
         for i in range(len(self.array)) :
             if self.array[i].Name +' ' + self.array[i].Teacher == CourseteacherName:
                 temp = self.array[i]
@@ -46,7 +36,7 @@ class dictionary():
         self.dic = {}
 
     def insert(self , course):
-        self.dic[course[0]+' '+course[1]] = subject(course)
+        self.dic[course[0]+' '+course[1]] = node(course)
 
     def search(self,CourseteacherName):
         return self.dic.get(CourseteacherName) #class
