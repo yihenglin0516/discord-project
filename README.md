@@ -1,4 +1,22 @@
 # discord-project
+#環境和套件要求  
+pyhton3  
+beautifulsoup4  
+request  
+json  
+discord.py 
+jeff補充
+
+#軟體基本功能  
+此軟體的使用方法有兩種
+1.使用由開發者host的discord chatbot  
+  透過連結:https://discord.com/api/oauth2/authorize?client_id=857974617909886986&permissions=0&scope=bot  
+  將chatbot加入你的discord sever  
+2.創建屬於自己的discord chatbot帳號
+  登入discord網站創建自己的chatbot帳號之後取得其token  
+  在bot.py中最後加入程式  bot.run('token')即可運行自己的discord chatbot
+  
+
 使用方法:
 
 注意: 課程名稱 教師 中間需有空白
