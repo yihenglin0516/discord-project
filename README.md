@@ -103,5 +103,5 @@ Save_data:
     save:透過傳入的ctx物件，判斷要儲存的data，並透過request模組和jsonstorage互動，將data轉為json檔並更新  
     load:透過傳入的ctx物件，判斷要讀取的data，並透過request模組和jsonstorage互動，將資料取下並insert進hash讓使用者可以access  
 Web:
-  show_info:傳入課程網連結，透過request模組爬取課程資料，以str形式回傳資料
+    show_info:傳入課程網連結，透過request模組爬取課程資料，以str形式回傳資料
   
