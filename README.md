@@ -5,7 +5,7 @@ beautifulsoup4
 request  
 json  
 discord.py 
-re\n
+re'\n'
 openpyxl\n
 pandas\n
 
