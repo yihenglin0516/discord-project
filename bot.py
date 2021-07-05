@@ -37,7 +37,7 @@ async def connect(ctx):
     for key  in database.database:
         table=database.database[key]
         now=time.time()
-        if now-table.last_updated>5:
+        if now-table.last_updated>1800: #30分鐘
             server=table.server
             await server.send("機器人先去睡覺了，請用!connect叫醒我")
             
@@ -146,4 +146,3 @@ async def show_schedule(ctx):
     await ctx.send(embed = embedVr)
     await ctx.send(embed = embed_credit)
     table.last_updated=time.time()
-
